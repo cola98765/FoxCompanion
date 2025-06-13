@@ -74,6 +74,12 @@ https://discord.gg/AqpW9TjUfr
 
 Changelog:
 ==========
+
+2.0.0
+- Fixed compatibility with the newest game update 2.44
+- Reenabled pawprints
+- Added Ptarmigan to target list
+
 0.9.9.5 "Fury, Then Silence"
 - Fixed compatibility with the newest game update 1.95 "Fury, Then Silence"
 - Took out fox snow pawprints until I can fix the "player has wolf tracks"-bugfixes
