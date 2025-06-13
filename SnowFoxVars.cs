@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {

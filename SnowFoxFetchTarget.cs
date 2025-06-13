@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -85,7 +83,7 @@ namespace FoxCompanion
                     // MelonLogger.Msg("Random: " + FoxVars.rabbidCatchRand);
                     //FoxVars.rabbidCatchRand <= Settings.options.foxCatchChance 
                     
-                    if (FoxVars.rabbidCatchRand <= Settings.options.chanceToCatch)
+                    if (FoxVars.rabbidCatchRand <= SnowFoxSettings.options.chanceToCatch)
                     {
 
                         MelonLogger.Msg("Killed the rabbit!");

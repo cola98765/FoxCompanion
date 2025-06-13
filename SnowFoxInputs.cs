@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
-using UnhollowerRuntimeLib;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -12,7 +9,7 @@ namespace FoxCompanion
 
         public static void SnowFoxInputsUpdate()
         {
-            if (InputManager.GetKeyDown(InputManager.m_CurrentContext, Settings.options.inputButtonFollow) && FoxVars.foxactive == true && FoxVars.foxSpawned == true)
+            if (InputManager.GetKeyDown(InputManager.m_CurrentContext, SnowFoxSettings.options.inputButtonFollow) && FoxVars.foxactive == true && FoxVars.foxSpawned == true)
             {
                 // Toggle following player
                 if (FoxVars.foxShouldFollowPlayer == false)
@@ -20,7 +17,7 @@ namespace FoxCompanion
                     //MelonLogger.Msg("Fox is now following player");
                     FoxVars.foxShouldFollowPlayer = true;
                     FoxVars.foxShouldFollowSomething = false;
-                    if (Settings.options.settingDisplayMsg == true)
+                    if (SnowFoxSettings.options.settingDisplayMsg == true)
                     {
                         HUDMessage.AddMessage(FoxVars.foxName + " is following you now", 1f, true, false);
                     }
@@ -31,7 +28,7 @@ namespace FoxCompanion
                     //MelonLogger.Msg("Fox is now waiting");
                     FoxVars.foxShouldFollowPlayer = false;
                     FoxVars.foxState_Movement = "idle";
-                    if (Settings.options.settingDisplayMsg == true)
+                    if (SnowFoxSettings.options.settingDisplayMsg == true)
                     {
                         HUDMessage.AddMessage(FoxVars.foxName + " will be waiting for you", 1f, true, false);
                     }                    
@@ -40,11 +37,11 @@ namespace FoxCompanion
             }
 
             // Teleport fox to player
-            if (InputManager.GetKeyDown(InputManager.m_CurrentContext, Settings.options.inputButtonTeleport) && FoxVars.foxactive == true && FoxVars.foxSpawned == true) // Teleport fox to player
+            if (InputManager.GetKeyDown(InputManager.m_CurrentContext, SnowFoxSettings.options.inputButtonTeleport) && FoxVars.foxactive == true && FoxVars.foxSpawned == true) // Teleport fox to player
             {
                 SnowFoxTeleportFoxMain.TeleportFoxToTarget(FoxVars.playerTransform);
 
-				if (Settings.options.settingDisplayMsg == true)
+				if (SnowFoxSettings.options.settingDisplayMsg == true)
                 {
                     HUDMessage.AddMessage("You've teleported " + FoxVars.foxName +" to you", 1f, true, false);
                 }
@@ -58,11 +55,11 @@ namespace FoxCompanion
             }*/
 
 
-			if (InputManager.GetKeyDown(InputManager.m_CurrentContext, Settings.options.inputButtonCommandMode) && FoxVars.foxactive == true && FoxVars.foxSpawned == true && FoxVars.targetsphereActive == false) // Enable targeting mode
+			if (InputManager.GetKeyDown(InputManager.m_CurrentContext, SnowFoxSettings.options.inputButtonCommandMode) && FoxVars.foxactive == true && FoxVars.foxSpawned == true && FoxVars.targetsphereActive == false) // Enable targeting mode
             {
 				//FoxVars.showCrosshair = true;
 				//Settings.options.foxCalories = Settings.options.foxCalories - 100;
-				if (Settings.options.settingDisplayMsg == true)
+				if (SnowFoxSettings.options.settingDisplayMsg == true)
 				{
 					HUDMessage.AddMessage("You've activated the command mode", 1f, true, false);
 				}
@@ -109,7 +106,7 @@ namespace FoxCompanion
 
                     if (FoxVars.sphereTargetObject == 2 && FoxVars.foundRabbit == true)
                     {
-						if (Settings.options.settingDisplayMsg == true)
+						if (SnowFoxSettings.options.settingDisplayMsg == true)
 						{
 							HUDMessage.AddMessage("You've sent " + FoxVars.foxName + " to hunt", 1f, true, false);
 						}
@@ -133,7 +130,7 @@ namespace FoxCompanion
 
                     if (FoxVars.sphereTargetObject == 3)
                     {
-						if (Settings.options.settingDisplayMsg == true)
+						if (SnowFoxSettings.options.settingDisplayMsg == true)
 						{
 							HUDMessage.AddMessage("You've sent " + FoxVars.foxName + " to fetch", 1f, true, false);
 						}
@@ -155,7 +152,7 @@ namespace FoxCompanion
 
                     if (FoxVars.sphereTargetObject == 4)
                     {
-						if (Settings.options.settingDisplayMsg == true)
+						if (SnowFoxSettings.options.settingDisplayMsg == true)
 						{
 							HUDMessage.AddMessage("You've sent " + FoxVars.foxName + " to eat", 1f, true, false);
 						}
@@ -186,7 +183,7 @@ namespace FoxCompanion
                     //GameManager.GetPlayerManagerComponent().SetControlMode(PlayerControlMode.Normal);
                     GameManager.GetPlayerManagerComponent().SetControlMode(PlayerControlMode.Normal);
 
-					if (Settings.options.settingDisplayMsg == true)
+					if (SnowFoxSettings.options.settingDisplayMsg == true)
 					{
 						HUDMessage.AddMessage("You've deactivated the command mode", 1f, true, false);
 					}

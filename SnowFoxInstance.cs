@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
 
 namespace FoxCompanion
@@ -128,7 +125,7 @@ namespace FoxCompanion
 			}
 
 
-			if (Settings.options.settingFoxFurShader == true)
+			if (SnowFoxSettings.options.settingFoxFurShader == true)
             {
                 FoxVars.foxRenderer.material = FoxVars.furShaderMat;
 
@@ -144,7 +141,7 @@ namespace FoxCompanion
             public int settingTexture = 0;*/
             byte[] img;
 
-                switch (Settings.options.settingTexture)
+                switch (SnowFoxSettings.options.settingTexture)
                 {
                     case 0: 
                         img = System.IO.File.ReadAllBytes("Mods\\foxtures\\snow.png");
@@ -184,9 +181,9 @@ namespace FoxCompanion
                 FoxVars.foxRenderer.material.mainTexture = FoxVars.foxTexture;
                 
 
-                FoxVars.foxFurColor = new Color(Settings.options.settingFoxFurColorR, Settings.options.settingFoxFurColorG, Settings.options.settingFoxFurColorB, 1f);
-                FoxVars.foxAuroraEmissionColor = new Vector4(Settings.options.settingFoxAuroraColorR, Settings.options.settingFoxAuroraColorG, Settings.options.settingFoxAuroraColorB, 1f) * Settings.options.settingFoxAuroraIntensity;
-                FoxVars.foxAuroraPatternColor = new Color(Settings.options.settingFoxAuroraColorR, Settings.options.settingFoxAuroraColorG, Settings.options.settingFoxAuroraColorB, 1f);
+                FoxVars.foxFurColor = new Color(SnowFoxSettings.options.settingFoxFurColorR, SnowFoxSettings.options.settingFoxFurColorG, SnowFoxSettings.options.settingFoxFurColorB, 1f);
+                FoxVars.foxAuroraEmissionColor = new Vector4(SnowFoxSettings.options.settingFoxAuroraColorR, SnowFoxSettings.options.settingFoxAuroraColorG, SnowFoxSettings.options.settingFoxAuroraColorB, 1f) * SnowFoxSettings.options.settingFoxAuroraIntensity;
+                FoxVars.foxAuroraPatternColor = new Color(SnowFoxSettings.options.settingFoxAuroraColorR, SnowFoxSettings.options.settingFoxAuroraColorG, SnowFoxSettings.options.settingFoxAuroraColorB, 1f);
 
                 // Fur color
                 FoxVars.foxRenderer.material.SetColor("_Color", FoxVars.foxFurColor);
@@ -202,8 +199,8 @@ namespace FoxCompanion
                 FoxVars.foxLight.transform.localPosition = new Vector3(0f, 0.6f, 0.3f); //new Vector3(0.01f, 0.05f, 0.523f);
                 FoxVars.foxLightComp = FoxVars.foxLight.AddComponent<Light>();
                 FoxVars.foxLightComp.color = FoxVars.foxAuroraPatternColor;
-                FoxVars.foxLightComp.intensity = Settings.options.foxAuroraLightIntensity;
-                FoxVars.foxLightComp.range = Settings.options.foxAuroraLightRange;
+                FoxVars.foxLightComp.intensity = SnowFoxSettings.options.foxAuroraLightIntensity;
+                FoxVars.foxLightComp.range = SnowFoxSettings.options.foxAuroraLightRange;
                 FoxVars.foxLightComp.enabled = false;
                
 
@@ -215,7 +212,7 @@ namespace FoxCompanion
                 FoxVars.foxanimator.SetLayerWeight(FoxVars.foxanimator.GetLayerIndex("Fox"), 1);
 
 
-                if (Settings.options.settingAutoFollow == true)
+                if (SnowFoxSettings.options.settingAutoFollow == true)
                 {
                     MelonLogger.Msg("Autofollow enabled");
                     FoxVars.foxShouldFollowSomething = false;

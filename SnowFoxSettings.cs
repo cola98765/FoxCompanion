@@ -1,7 +1,7 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System.Reflection;
 using UnityEngine;
 using ModSettings;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -149,7 +149,7 @@ namespace FoxCompanion
 
             byte[] img;
             // Apply texture
-            switch (Settings.options.settingTexture)
+            switch (SnowFoxSettings.options.settingTexture)
             {
                 case 0:
                     img = System.IO.File.ReadAllBytes("Mods\\foxtures\\snow.png");
@@ -180,7 +180,7 @@ namespace FoxCompanion
                     break;
             }
 
-            if (Settings.options.settingFoxFurShader == true)
+            if (SnowFoxSettings.options.settingFoxFurShader == true)
             {
                 FoxVars.foxRenderer.material = FoxVars.furShaderMat;
             }
@@ -220,7 +220,7 @@ namespace FoxCompanion
         }
     }
 
-    internal static class Settings
+    internal static class SnowFoxSettings
     {
         public static SnowFoxSettingsMain options;
         public static KeyCode returnKeyValue;

@@ -1,9 +1,7 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
+
 using MelonLoader;
-using Harmony;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -30,10 +28,10 @@ namespace FoxCompanion
             FoxVars.foxRLHandTrack = GameObject.Find("L Foot").transform;
             FoxVars.foxRRHandTrack = GameObject.Find("R Foot").transform;
 
-            //FootstepTrailType trailType = FootstepTrailType.AiTransient;
-            //SnowImprintType imprintType = SnowImprintType.WolfFootprint;  //WolfFootprint RabbitFootprint
+            FootstepTrailType trailType = FootstepTrailType.AiTransient;
+            SnowImprintType imprintType = SnowImprintType.RabbitFootprint;  //WolfFootprint RabbitFootprint
 
-            //foxTrail = new FootstepTrail(trailType, imprintType);
+            foxTrail = new FootstepTrail(trailType, imprintType);
             //GameManager.GetFootstepTrailManager().AddFootstepTrail(foxTrail, true);
         }
 
@@ -42,7 +40,7 @@ namespace FoxCompanion
             //Vector3 position = FoxVars.foxFLHandTrack.position;
             
 
-			/*
+			
             float num = 0.5f;
             position.y += num;
             RaycastHit raycastHit;
@@ -55,7 +53,7 @@ namespace FoxCompanion
             {
                 return;
             }
-            if (GameManager.GetDynamicDecalsManager().CanCreateFootPrintsOnMaterial(raycastHit.collider.gameObject.tag) && SnowPatchManager.m_Active && (m_LastFootstepTick != Time.frameCount || m_LastFootstepFront != isFront || m_LastFootstepLeft != isLeft))
+            if (GameManager.GetDynamicDecalsManager().CanCreateFootPrintsOnMaterial(raycastHit.collider.gameObject) && SnowPatchManager.m_Active && (m_LastFootstepTick != Time.frameCount || m_LastFootstepFront != isFront || m_LastFootstepLeft != isLeft))
             {
                 m_LastFootstepTick = Time.frameCount;
                 m_LastFootstepFront = isFront;
@@ -64,7 +62,7 @@ namespace FoxCompanion
                 m_NextRecentFootPrintsIndex++;
                 foxTrail.AddFootstep(position, raycastHit.point, raycastHit.normal, FoxVars.foxTransform.rotation.eulerAngles.y, isLeft, (!isFront) ? 1 : 0, 0f);
             }
-			*/
+			
         }
 
         public static bool PositionOverlapsRecentFootprints(Vector3 pos)

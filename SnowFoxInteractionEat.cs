@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -85,7 +83,7 @@ namespace FoxCompanion
                         FoxVars.foxanimator.speed = 1.0f;
                         MelonLogger.Msg("Fox is eating ...");
                         FoxVars.foxanimator.Play("Eat Start", -1, 0f);
-                        food.m_NonInteractive = true;
+                        food.NonInteractive = true;
 
                         FoxVars.eatTimer = 0;
                         //FoxVars.foxanimator.SetBool("Action", true);

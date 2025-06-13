@@ -1,9 +1,5 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
-using MelonLoader;
-using Harmony;
+﻿using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -14,7 +10,7 @@ namespace FoxCompanion
         {
             public static void Postfix()
             {
-                Settings.options.Save();
+                SnowFoxSettings.options.Save();
             }
         }        
     }

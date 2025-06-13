@@ -1,11 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
-using System;
-using UnhollowerRuntimeLib;
-using UnhollowerBaseLib.Attributes;
-using System.IO;
-using System.Reflection;
 
 namespace FoxCompanion
 {
@@ -64,7 +57,6 @@ namespace FoxCompanion
 
 		bool destinationActive = false;
 		
-		[HideFromIl2Cpp]
 		public void goTo(Vector3 _dest)//Start moving to position following pest path
 		{
 			destinationActive = true;

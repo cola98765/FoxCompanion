@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -78,7 +76,7 @@ namespace FoxCompanion
 					GameObject foxJaw;
 					foxJaw = FoxVars.foxTransform.GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(2).gameObject;
 					FoxVars.sphereLastHitObj.transform.SetParent(foxJaw.transform, true);
-					FoxVars.targetHitObject.GetComponent<GearItem>().m_NonInteractive = false;
+					FoxVars.targetHitObject.GetComponent<GearItem>().NonInteractive = false;
 
 
 					FoxVars.sphereTargetObject = 0;

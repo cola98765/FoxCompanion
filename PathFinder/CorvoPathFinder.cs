@@ -1,13 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
 using MelonLoader;
-using System;
-using UnhollowerRuntimeLib;
-using UnhollowerBaseLib.Attributes;
-using System.IO;
-using System.Reflection;
-using UnhollowerBaseLib;
 
 namespace FoxCompanion
 {
@@ -53,13 +46,13 @@ namespace FoxCompanion
 
 	GridNode[,,] grid = new GridNode[0, 0, 0];
 
-	[HideFromIl2Cpp]
+
 	public Vector3 getDestination()
 	{
 		return foundPath.getPosition();
 	}
 
-	[HideFromIl2Cpp]
+
 	public Vector3[] getPath()
 	{
 		if (havePath())
@@ -76,13 +69,13 @@ namespace FoxCompanion
 		return new Vector3[0];
 	}
 
-	[HideFromIl2Cpp]
+
 	public bool havePath()
 	{            
 		return _havePath;
 	}
 
-	[HideFromIl2Cpp]
+
 	public void nextNode()
 	{
 		foundPath = foundPath.nextPathNode;
@@ -90,7 +83,7 @@ namespace FoxCompanion
 			clearPath();
 	}
 
-	[HideFromIl2Cpp]
+
 	public bool findPath(Vector3 _destination, Vector3 _startPos)
 	{
 			int groundMask = 1 << 8;
@@ -113,7 +106,7 @@ namespace FoxCompanion
 
 	}
 
-	[HideFromIl2Cpp]
+
 	public bool findPath(Vector3 _destination, Transform _updatePos = null)
 	{
 			int groundMask = 1 << 8;
@@ -137,7 +130,7 @@ namespace FoxCompanion
 		return false;
 	}
 
-	[HideFromIl2Cpp]
+
 	public void clearGrid()
 	{
 		haveGrid = false;
@@ -145,7 +138,7 @@ namespace FoxCompanion
 		grid = new GridNode[0, 0, 0];
 	}
 
-	[HideFromIl2Cpp]
+
 	public void clearPath()
 	{
 		foundPath = null;
@@ -154,7 +147,7 @@ namespace FoxCompanion
 		_discovered.Clear();
 	}
 
-	[HideFromIl2Cpp]
+
 	public void forceStop()
 	{
 		calculating = generating = false;
@@ -165,7 +158,7 @@ namespace FoxCompanion
 	//INTERNAL PROCESSING/YOU DONT NEED TO EDIT HERE
 	int sX = 0, sY = 0, lvs = 0;
 
-	[HideFromIl2Cpp]
+
 	public void generateGrid(bool _force = false)
 	{
 		if (!generating || _force)
@@ -188,7 +181,7 @@ namespace FoxCompanion
 	bool haveGrid = false;
 	bool generating = false;
 	
-	[HideFromIl2Cpp]
+
 	IEnumerator generatingGrid()
 	{
         haveGrid = false;
@@ -324,7 +317,7 @@ namespace FoxCompanion
 	}
 
 
-	[HideFromIl2Cpp]
+
 	public void conectGridPoints(GridNode a, GridNode b)
 	{
 		if (a == null || b == null)
@@ -355,7 +348,7 @@ namespace FoxCompanion
 	bool calculating = false;
 	bool _havePath = false;
 
-	[HideFromIl2Cpp]
+
 	IEnumerator calculatePath(Vector3 _destination, Vector3 _pos, Transform _updatePos = null)
 	{
 		generateGrid();
@@ -477,27 +470,27 @@ namespace FoxCompanion
 		clearGrid();
 	}
 
-	[HideFromIl2Cpp]
+
 	public bool isCalculating()
 	{
 		return calculating;
 	}
 
-	[HideFromIl2Cpp]
+
 	float iMultiplicator(int i)
 	{
 		//return 1;
 		return (1 + (Mathf.Abs(i - (float)sX / 2) / (101 - expansionCoefficient)));
 	}
 
-	[HideFromIl2Cpp]
+
 	float jMultiplicator(int j)
 	{
 		//return 1;
 		return (1 + (Mathf.Abs(j - (float)(sY / 2)) / (101 - expansionCoefficient)));
 	}
 
-	[HideFromIl2Cpp]
+
 	void OnDrawGizmosSelected()
 	{
 		Color _gizcolor = Color.green;
@@ -605,7 +598,7 @@ namespace FoxCompanion
 
 	}
 
-	[HideFromIl2Cpp]
+
 	public int setMaxPassi()
 	{
 		switch (processingSpeed)
@@ -624,7 +617,7 @@ namespace FoxCompanion
 		return 2000;
 	}
 
-	[HideFromIl2Cpp]
+
 	public GridNode nearestNode(Vector3 _pos)
 	{
 		GridNode _nearest = null;
@@ -661,25 +654,25 @@ public class GridNode
 	public GridNode nextPathNode = null;
 	public bool isChecked = false;
 
-	[HideFromIl2Cpp]
+
 	public GridNode(Vector3 _pos)
 	{
 		position = _pos;
 	}
 
-	[HideFromIl2Cpp]
+
 	public Vector3 getPosition()
 	{
 		return position;
 	}
 
-	[HideFromIl2Cpp]
+
 	public Vector3 getLookablePosition()
 	{
 		return position + Vector3.up * 0.3f;
 	}
 
-	[HideFromIl2Cpp]
+
 	public void addNearNode(GridNode _node)
 	{
 		GridNode[] _temp = new GridNode[nearNodes.Length + 1];

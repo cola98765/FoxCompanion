@@ -1,22 +1,14 @@
-﻿using System;
-using MelonLoader;
-using Harmony;
+﻿using MelonLoader;
 using UnityEngine;
-using System.Reflection;
-using System.Xml.XPath;
-using System.Globalization;
-using UnhollowerRuntimeLib;
-using ModSettings;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
     public class SnowFoxMain : MelonMod
     {        
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
 			// Pathfinding components
-			ClassInjector.RegisterTypeInIl2Cpp<CorvoPathFinder>();
-			ClassInjector.RegisterTypeInIl2Cpp<UnitPathfinder>();
 			
 
 			// load fox asset
@@ -35,30 +27,31 @@ namespace FoxCompanion
             
 
             // Settings menu
-            FoxCompanion.Settings.OnLoad();
+            FoxCompanion.SnowFoxSettings.OnLoad();
         }
 
         public override void OnSceneWasInitialized(int level, string sceneName)
         {
             FoxVars.loadedScene = level;
             //MelonLogger.Msg("Level initialized: " + level);
-       
-            if (level >= 4 && FoxVars.fox == null)
+
+            bool playable = !(string.IsNullOrEmpty(sceneName) || sceneName.Contains("MainMenu") || sceneName == "Boot" || sceneName == "Empty");
+            if (playable && FoxVars.fox == null)
             {               
                 SnowFoxInstanceMain.SnowFoxInstanceLoad();
                 
                 FoxVars.timeToSpawnStarted = false;
-                //MelonLogger.Msg("After load and teleport");       
+                MelonLogger.Msg("After load and teleport");       
                 SnowFoxTeleportFoxMain.TeleportFoxToTarget(GameManager.GetPlayerTransform());
 
 			}
 
             
-            if(level >= 4 && FoxVars.fox != null)
+            if(playable && FoxVars.fox != null)
             {
                 FoxVars.timeToSpawnStarted = true;
                 
-                //MelonLogger.Msg("After load and teleport");
+                MelonLogger.Msg("After load and teleport");
             }
             
         }

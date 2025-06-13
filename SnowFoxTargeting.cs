@@ -1,8 +1,6 @@
-﻿using System.IO;
-using System.Reflection;
-using ModSettings;
-using UnityEngine;
+﻿using UnityEngine;
 using MelonLoader;
+using Il2Cpp;
 
 namespace FoxCompanion
 {
@@ -35,7 +33,7 @@ namespace FoxCompanion
                     {
                         FoxVars.sphereLastHit = foo.transform.gameObject.transform;
                         FoxVars.sphereLastHitObj = foo.transform.gameObject;
-                        if (Settings.options.settingDisplayMsg == true)
+                        if (SnowFoxSettings.options.settingDisplayMsg == true)
                         {
                             HUDMessage.AddMessage(FoxVars.foxName + " can eat this", 1f, true, false);
                         }
@@ -50,9 +48,9 @@ namespace FoxCompanion
                         //MelonLogger.Msg("Found food: " + foo.transform.gameObject.name);
 
                     }
-                    else if ((foo.transform.gameObject.name != null) && foo.transform.gameObject.name.Contains("WILDLIFE_Rabbit") == true && foo.transform.gameObject.activeSelf)
+                    else if ((foo.transform.gameObject.name != null) && (foo.transform.gameObject.name.Contains("WILDLIFE_Rabbit") || (foo.transform.gameObject.name.Contains("WILDLIFE_Ptarmigan"))) && foo.transform.gameObject.activeSelf)
                     {
-						if (Settings.options.settingDisplayMsg == true)
+						if (SnowFoxSettings.options.settingDisplayMsg == true)
 						{
 							HUDMessage.AddMessage("Send " + FoxVars.foxName + " to hunt", 1f, true, false);
 						}
@@ -70,7 +68,7 @@ namespace FoxCompanion
                     }                   
                     else if ((foo.transform.gameObject.name != null) && foo.transform.gameObject.name.Contains("GEAR_") == true && foo.transform.gameObject.activeSelf)
                     {
-						if (Settings.options.settingDisplayMsg == true)
+						if (SnowFoxSettings.options.settingDisplayMsg == true)
 						{
 							HUDMessage.AddMessage(FoxVars.foxName + " can fetch this", 1f, true, false);
 						}
